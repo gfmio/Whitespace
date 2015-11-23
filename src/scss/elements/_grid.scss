@@ -3,7 +3,7 @@
 // 
 
 @if elementIsIncluded("grid") {
-	.container {
-		@extend %container;
+	.grid {
+		@extend %grid;
 	}
 }
