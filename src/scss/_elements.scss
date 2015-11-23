@@ -1,0 +1,15 @@
+// 
+// Element styles import page
+// 
+
+@function elementIsIncluded($name) {
+	@each $setting in $elements {
+		@if nth($setting, 1) == $name {
+			@return nth($setting, 2);
+		}
+	}
+
+	@return false
+}
+
+@import 'elements/grid';
