@@ -37,14 +37,14 @@
 
 	// Flex-wrap
 
-	// nowrap (default): single-line / left to right in ltr; right to left in rtl
-	&, &.nowrap {
-		flex-wrap: nowrap;
+	// wrap (default): multi-line / left to right in ltr; right to left in rtl
+	&, &.wrap {
+		flex-wrap: wrap;
 	}
 
-	// wrap: multi-line / left to right in ltr; right to left in rtl
-	&.wrap {
-		flex-wrap: wrap;
+	// nowrap: single-line / left to right in ltr; right to left in rtl
+	&.nowrap {
+		flex-wrap: nowrap;
 	}
 
 	// wrap-reverse: multi-line / right to left in ltr; left to right in rtl
@@ -54,8 +54,13 @@
 
 	// justify-content
 	
-	// flex-start (default): items are packed toward the start line
-	&, &.justify-content-start {
+	// space-around (default): items are evenly distributed in the line with equal space around them. Note that visually the spaces aren't equal, since all the items have equal space on both sides. The first item will have one unit of space against the container edge, but two units of space between the next item because that next item has its own spacing that applies.
+	&, &.justify-content-space-around {
+		justify-content: space-around;
+	}
+
+	// flex-start: items are packed toward the start line
+	&.justify-content-start {
 		justify-content: flex-start;
 	}
 
@@ -74,10 +79,6 @@
 		justify-content: space-between;
 	}
 
-	// space-around: items are evenly distributed in the line with equal space around them. Note that visually the spaces aren't equal, since all the items have equal space on both sides. The first item will have one unit of space against the container edge, but two units of space between the next item because that next item has its own spacing that applies.
-	&.justify-content-space-around {
-		justify-content: space-around;
-	}
 
 	// align-items (vertical align of items within one line)
 
@@ -106,12 +107,12 @@
 		align-items: baseline;
 	}
 
+	// align-content (vertical align of mutliple lines of items within the container)
+
 	// stretch (default): lines stretch to take up the remaining space
 	&, &.align-lines-stretch {
 		align-content: stretch;
 	}
-
-	// align-content (vertical align of mutliple lines of items within the container)
 
 	// flex-start: lines packed to the start of the container
 	&.align-lines-start {
