@@ -1,0 +1,144 @@
+// 
+// Flex grid placeholder and mixin styles
+// 
+
+@mixin grid {
+	// Container styles
+
+	& {
+		display: flex;
+	}
+
+	&.inline {
+		display: inline-flex;
+	}
+
+	// Flex-direction
+
+	// row (default): left to right in ltr; right to left in rtl
+	&, &.direction-row {
+		flex-direction: row;
+	}
+
+	// row-reverse: right to left in ltr; left to right in rtl
+	&.direction-row-reverse {
+		flex-direction: row-reverse;
+	}
+
+	// column: same as row but top to bottom
+	&.direction-column {
+		flex-direction: column;
+	}
+
+	// column-reverse: same as row-reverse but bottom to top
+	&.direction-column-reverse {
+		flex-direction: column-reverse;
+	}
+
+	// Flex-wrap
+
+	// nowrap (default): single-line / left to right in ltr; right to left in rtl
+	&, &.nowrap {
+		flex-wrap: nowrap;
+	}
+
+	// wrap: multi-line / left to right in ltr; right to left in rtl
+	&.wrap {
+		flex-wrap: wrap;
+	}
+
+	// wrap-reverse: multi-line / right to left in ltr; left to right in rtl
+	&.wrap-reverse {
+		flex-wrap: wrap-reverse;
+	}
+
+	// justify-content
+	
+	// flex-start (default): items are packed toward the start line
+	&, &.justify-content-start {
+		justify-content: flex-start;
+	}
+
+	// flex-end: items are packed toward to end line
+	&.justify-content-end {
+		justify-content: flex-end;
+	}
+
+	// center: items are centered along the line
+	&.justify-content-center {
+		justify-content: center;
+	}
+
+	// space-between: items are evenly distributed in the line; first item is on the start line, last item on the end line
+	&.justify-content-space-between {
+		justify-content: space-between;
+	}
+
+	// space-around: items are evenly distributed in the line with equal space around them. Note that visually the spaces aren't equal, since all the items have equal space on both sides. The first item will have one unit of space against the container edge, but two units of space between the next item because that next item has its own spacing that applies.
+	&.justify-content-space-around {
+		justify-content: space-around;
+	}
+
+	// align-items (vertical align of items within one line)
+
+	// stretch (default): stretch to fill the container (still respect min-width/max-width)
+	&, &.align-items-stretch {
+		align-items: stretch;
+	}
+
+	// flex-start: cross-start margin edge of the items is placed on the cross-start line
+	&.align-items-start {
+		align-items: flex-start;
+	}
+
+	// flex-end: cross-end margin edge of the items is placed on the cross-end line
+	&.align-items-end {
+		align-items: flex-end;
+	}
+
+	// center: items are centered in the cross-axis
+	&.align-items-center {
+		align-items: center;
+	}
+
+	// baseline: items are aligned such as their baselines align
+	&.align-items-baseline {
+		align-items: baseline;
+	}
+
+	// stretch (default): lines stretch to take up the remaining space
+	&, &.align-lines-stretch {
+		align-content: stretch;
+	}
+
+	// align-content (vertical align of mutliple lines of items within the container)
+
+	// flex-start: lines packed to the start of the container
+	&.align-lines-start {
+		align-content: flex-start;
+	}
+
+	// flex-end: lines packed to the end of the container
+	&.align-lines-end {
+		align-content: flex-end;
+	}
+
+	// center: lines packed to the center of the container
+	&.align-lines-center {
+		align-content: center;
+	}
+
+	// space-between: lines evenly distributed; the first line is at the start of the container while the last one is at the end
+	&.align-lines-space-between {
+		align-content: space-between;
+	}
+
+	// space-around: lines evenly distributed with equal space around each line
+	&.align-lines-space-around {
+		align-content: space-around;
+	}
+}
+
+%container {
+	@include grid;
+}

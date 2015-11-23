@@ -1,0 +1,9 @@
+// 
+// Grid element styles
+// 
+
+@if elementIsIncluded("grid") {
+	.container {
+		@extend %container;
+	}
+}
