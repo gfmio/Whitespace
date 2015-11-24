@@ -1,0 +1,13 @@
+// 
+// Container element styles
+// 
+
+@if elementIsIncluded("container") {
+	.container {
+		@include container($min-rel-width: $min-relative-container-width, 
+			$max-rel-width: $max-relative-container-width, 
+			$min-width: $column-min-width,
+			$max-width: $column-max-width, 
+			$gutter: $gutter);
+	}
+}

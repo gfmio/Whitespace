@@ -1,0 +1,33 @@
+// 
+// Container placeholder and mixin
+// 
+
+@mixin container($min-rel-width, $max-rel-width, $min-width, $max-width, $gutter) {
+	& {
+		width: $max-rel-width;
+		max-width: $max-width;
+		margin: 0 auto;
+
+		padding-left: 0.5 * $gutter;
+		padding-right: 0.5 * $gutter;
+	}
+
+	@for $n from 2 to $max-column-count + 1 {
+		&.cols-#{$n} {
+			$width: $n * $min-width + ($n + 1) * $gutter;
+			
+			@media (min-width: em($width)) {
+				// min-width: $min-rel-width;
+				// width: $width;
+				max-width: $max-rel-width;
+			}
+
+			& .grid > .item, &.grid > .item {
+				min-width: $min-width;
+				max-width: $max-width;
+				margin-left: 0.5 * $gutter;
+				margin-right: 0.5 * $gutter;
+			}
+		}
+	} 
+}
