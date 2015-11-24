@@ -2,8 +2,59 @@
 // Whitespace settings
 // 
 
+$colors: (
+	"red" #FF0000,
+	"green" #00FF00,
+	"blue" #0000FF,
+	"yellow" #FFFF00,
+);
+
+$grayscales: (
+	"black" #111111,
+	"gray-dark" #333333,
+	"gray-medium" #999999,
+	"gray-light" #CCCCCC,
+	"white" #FFFFFF,
+);
+
+$fonts: (
+);
+
+$base-font-size: 16px;
+$base-line-height: 1.618;
+
+$paddings: (
+	"none" 0,
+	"xsmall" 0.25,
+	"small" 0.5,
+	"medium" 0.75,
+	"large" 1.0,
+	"xlarge" 1.5,
+	"xxlarge" 2.0,
+	"huge" 2.5,
+	"xhuge" 3.5,
+	"xxhuge" 5.0
+);
+
+$margins: $paddings;
+
+$rule-widths: (
+);
+
+$directions: ("left", "right", "top", "bottom");
+
 $max-column-count: 12;
+$gutter: padding("small");
+$column-min-width: 20rem;
+$column-max-width: 33rem;
+
+$min-relative-container-width: 61.8%;
+$max-relative-container-width: 100%;
+
+$max-window-em-width: $column-max-width / (1.0 - strip-units($min-relative-container-width));
 
 $elements: (
+	"generic" true,
 	"grid" true,
+	"container" true,
 );
