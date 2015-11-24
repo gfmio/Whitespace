@@ -186,6 +186,9 @@
 		@for $n from 1 to $col-count + 1 {
 			&.col-#{$n} {
 				flex-grow: $n;
+				width: auto !important;
+				min-width: auto !important;
+				max-width: 10000000000em !important;
 			}
 		}
 	}

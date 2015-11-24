@@ -17,16 +17,14 @@
 			$width: $n * $min-width + ($n + 1) * $gutter;
 			
 			@media (min-width: em($width)) {
-				// min-width: $min-rel-width;
-				// width: $width;
 				max-width: $max-rel-width;
 			}
 
 			& .grid > .item, &.grid > .item {
 				min-width: $min-width;
 				max-width: $max-width;
-				margin-left: 0.5 * $gutter;
-				margin-right: 0.5 * $gutter;
+				padding-left: 0.5 * $gutter;
+				padding-right: 0.5 * $gutter;
 			}
 		}
 	} 
