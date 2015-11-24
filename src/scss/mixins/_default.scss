@@ -1,0 +1,26 @@
+// 
+// Default settings
+// 
+
+$colors: () !default;
+
+$grayscales: () !default;
+
+$fonts: () !default;
+
+$base-font-size: 16px;
+$base-line-height: 1.618;
+
+$paddings: () !default;
+$margins: () !default;
+$rule-widths: () !default;
+
+$directions: ("left", "right", "top", "bottom") !default;
+
+$max-column-count: 12 !default;
+$gutter: 0 !default;
+$column-min-width: 0 !default;
+$column-max-width: 0 !default;
+
+$min-relative-container-width: 0% !default;
+$max-relative-container-width: 100% !default;
