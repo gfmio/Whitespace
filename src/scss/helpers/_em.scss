@@ -1,0 +1,22 @@
+// 
+// EM function
+// Converts length units into EMs
+// 
+
+@function em($number) {
+    @if unit($number) == "em" {
+        @return strip-units($number) * 1.0em;
+    } @else if unit($number) == "rem" {
+        @return strip-units($number) * 1.0em;
+    } @else if unit($number) == "%" {
+        @return strip-units($number) * 1.0em;
+    } @else if unit($number) == "px" {
+        @return strip-units($number) / 16.0 * 1.0em;
+    } @else if unit($number) == "pt" {
+        @return strip-units($number) / 12.0 * 1.0em;
+    } @else if unit($number) == "" {
+        @return strip-units($number) * 1.0em;
+    } @else {
+        @return false;
+    }
+}

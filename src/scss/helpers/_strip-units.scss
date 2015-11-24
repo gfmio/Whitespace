@@ -1,0 +1,10 @@
+// 
+// Strip units function
+// 
+
+@function strip-units($number) {
+    @if unit($number) == "%" {
+        @return $number / (100 * ($number * 0 + 1));
+    }
+    @return $number / ($number * 0 + 1);
+}

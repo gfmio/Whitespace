@@ -1,0 +1,13 @@
+// 
+// Dict functions
+// Functions manipulating dicts (actually nested lists)
+// 
+
+@function getDictItem($name, $list) {
+	@each $item in $list {
+		@if nth($item, 1) == $name {
+			@return nth($item, 2);
+		}
+	}
+	@return null;
+}
