@@ -2,7 +2,7 @@
 // Flex grid placeholder and mixin
 // 
 
-@mixin grid($col-count: $max-column-count) {
+@mixin grid($col-count) {
 	// Container styles
 
 	& {
@@ -54,9 +54,9 @@
 
 	// justify-content
 	
-	// space-around (default): items are evenly distributed in the line with equal space around them. Note that visually the spaces aren't equal, since all the items have equal space on both sides. The first item will have one unit of space against the container edge, but two units of space between the next item because that next item has its own spacing that applies.
-	&, &.justify-content-space-around {
-		justify-content: space-around;
+	// center (default): items are centered along the line
+	&, &.justify-content-center {
+		justify-content: center;
 	}
 
 	// flex-start: items are packed toward the start line
@@ -69,16 +69,15 @@
 		justify-content: flex-end;
 	}
 
-	// center: items are centered along the line
-	&.justify-content-center {
-		justify-content: center;
-	}
-
 	// space-between: items are evenly distributed in the line; first item is on the start line, last item on the end line
 	&.justify-content-space-between {
 		justify-content: space-between;
 	}
 
+	// space-around: items are evenly distributed in the line with equal space around them. Note that visually the spaces aren't equal, since all the items have equal space on both sides. The first item will have one unit of space against the container edge, but two units of space between the next item because that next item has its own spacing that applies.
+	&.justify-content-space-around {
+		justify-content: space-around;
+	}
 
 	// align-items (vertical align of items within one line)
 
@@ -190,8 +189,4 @@
 			}
 		}
 	}
-}
-
-%grid {
-	@include grid;
 }

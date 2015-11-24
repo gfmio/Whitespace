@@ -4,6 +4,6 @@
 
 @if elementIsIncluded("grid") {
 	.grid {
-		@extend %grid;
+		@include grid($max-column-count);
 	}
 }
