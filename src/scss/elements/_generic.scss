@@ -1,0 +1,156 @@
+//
+// Generic styles
+//
+
+@if elementIsIncluded("generic") {
+	// 
+	// Generic element styles
+	// 
+
+	* {
+		box-sizing: border-box;
+	}
+
+	html {
+		font-size: $base-font-size;
+		line-height: $base-line-height;
+	}
+
+	@media (min-width: $max-window-em-width) {
+		html {
+			font-size: 100.0 / strip-units($max-window-em-width) * 1.0vw;
+		}
+	}
+
+	//
+	// Colors
+	//
+
+	$allColors: append($colors, $grayscales);
+	@each $color in $allColors {
+		$name: nth($color, 1);
+		$value: nth($color, 2);
+		
+		// Background colors
+
+		.bg-#{$name} {
+			background-color: $value;
+		}
+
+		// Text colors
+
+		.text-#{$name} {
+			color: $value;
+		}
+
+		// Border colors
+
+		.border-#{$name} {
+			border-color: $value;
+		}
+
+		@each $direction in $directions {
+			.border-#{$direction}-#{$name} {
+				border-#{$direction}-color: $value;
+			}
+		}
+	}
+
+	//
+	// Distances
+	//
+
+	// Border and rule widths
+
+	@each $rule-width in $rule-widths {
+		$name: nth($rule-width, 1);
+		$value: nth($rule-width, 2);
+
+		hr.#{$name} {
+			width: rule-width($name);
+		}
+
+		.border-#{$name} {
+			border: rule-width($name);
+		}
+
+		@each $direction in $directions {
+			.border-#{$direction}-#{$name} {
+				border-#{$direction}: rule-width($name);
+			}
+		}
+	}
+
+	// Paddings
+
+	@each $padding in $paddings {
+		$name: nth($padding, 1);
+		$value: nth($padding, 2);
+
+		.padding-#{$name} {
+			& {
+				padding: padding($name);
+			}
+
+			@each $rule-width in $rule-widths {
+				$rule-width-name: nth($rule-width, 1);
+
+				&.border-#{$rule-width-name} {
+					padding: padding($name) - rule-width($rule-width-name);
+				}
+				@each $direction in $directions {
+					&.border-#{$direction}-#{$name} {
+						&.padding-#{$direction}-#{$name} {
+							padding-#{$direction}: padding($name) - rule-width($rule-width-name);
+						}
+					}
+				}
+			}
+		}
+
+		@each $direction in $directions {
+			.padding-#{$direction}-#{$name} {
+				& {
+					padding-#{$direction}: padding($name);
+				}
+
+				@each $rule-width in $rule-widths {
+					$rule-width-name: nth($rule-width, 1);
+
+					&.border-#{$direction}-#{$name} {
+						&.padding-#{$direction}-#{$name} {
+							padding-#{$direction}: padding($name) - rule-width($rule-width-name);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Margins
+
+	@each $margin in $margins {
+		$name: nth($margin, 1);
+		$value: nth($margin, 2);
+
+		.margin-#{$name} {
+			margin: margin($name);
+		}
+
+		@each $direction in $directions {
+			.margin-#{$direction}-#{$name} {
+				margin-#{$direction}: margin($name);
+			}
+		}
+
+		.margin-negative-#{$name} {
+			margin: -1.0 * margin($name);
+		}
+
+		@each $direction in $directions {
+			.margin-negative-#{$direction}-#{$name} {
+				margin-#{$direction}: -1.0 * margin($name);
+			}
+		}
+	}
+}

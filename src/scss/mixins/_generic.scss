@@ -1,0 +1,27 @@
+// 
+// Generic mixins and styles
+// 
+
+@function color($name) {
+	$allColors: append($colors, $grayscales);
+	@return getDictItem($name, $allColors);
+}
+
+@function font($name) {
+	@return getDictItem($name, $fonts);
+}
+
+@function padding($name) {
+	@return rem($base-line-height) * 
+		strip-units(rem(getDictItem($name, $paddings)));
+}
+
+@function margin($name) {
+	@return rem($base-line-height) * 
+		strip-units(rem(getDictItem($name, $margins)));
+}
+
+@function rule-width($name) {
+	@return rem($base-line-height) * 
+		strip-units(rem(getDictItem($name, $rule-widths)));
+}

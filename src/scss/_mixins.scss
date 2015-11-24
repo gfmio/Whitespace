@@ -2,4 +2,8 @@
 // Mixin and placeholder styles import page
 // 
 
+@import 'mixins/default';
+
+@import 'mixins/generic';
 @import 'mixins/grid';
+@import 'mixins/container';
