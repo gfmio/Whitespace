@@ -2,7 +2,7 @@
 // Container placeholder and mixin
 // 
 
-@mixin container($min-rel-width, $max-rel-width, $min-width, $max-width, $gutter) {
+@mixin container($max-rel-width, $max-width, $gutter) {
 	& {
 		width: $max-rel-width;
 		max-width: $max-width;
@@ -11,21 +11,4 @@
 		padding-left: 0.5 * $gutter;
 		padding-right: 0.5 * $gutter;
 	}
-
-	@for $n from 2 to $max-column-count + 1 {
-		&.cols-#{$n} {
-			$width: $n * $min-width + ($n + 1) * $gutter;
-			
-			@media (min-width: em($width)) {
-				max-width: $max-rel-width;
-			}
-
-			& .grid > .item, &.grid > .item {
-				min-width: $min-width;
-				max-width: $max-width;
-				padding-left: 0.5 * $gutter;
-				padding-right: 0.5 * $gutter;
-			}
-		}
-	} 
 }

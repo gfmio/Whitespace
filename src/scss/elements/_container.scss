@@ -3,11 +3,25 @@
 // 
 
 @if elementIsIncluded("container") {
-	.container {
-		@include container($min-rel-width: $min-relative-container-width, 
-			$max-rel-width: $max-relative-container-width, 
-			$min-width: $column-min-width,
-			$max-width: $column-max-width, 
-			$gutter: $gutter);
+	$max-rel-width: $max-relative-container-width;
+
+	@for $n from 1 to $max-column-count + 1 {
+		$max-width: $n * $column-max-width + ($n + 1) * $gutter;
+		
+		@if $n == 1 {
+			.container, .container-#{$n} {
+				@include container(
+					$max-rel-width: $max-rel-width, 
+					$max-width: $max-width, 
+					$gutter: $gutter);
+			}
+		} @else {
+			.container-#{$n} {
+				@include container(
+					$max-rel-width: $max-rel-width, 
+					$max-width: $max-width, 
+					$gutter: $gutter);
+			}
+		}
 	}
 }

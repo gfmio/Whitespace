@@ -3,7 +3,9 @@
 // 
 
 @if elementIsIncluded("grid") {
-	.grid {
-		@include grid($max-column-count);
+	@for $n from 1 to $max-column-count + 1 {
+		.grid-#{$n} {
+			@include grid($n);
+		}
 	}
 }
