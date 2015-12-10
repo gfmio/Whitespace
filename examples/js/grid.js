@@ -44,7 +44,7 @@ var MainView = React.createClass({
       }
     }
     
-    return (<div>{rows}</div>);
+    return (<div className="bg-black">{rows}</div>);
   }
 });
 
@@ -66,7 +66,9 @@ var Item = React.createClass({
   render: function() {
     var itemClass = "item text-center margin-bottom-xsmall margin-top-xsmall " + 
     	(this.props.width == 1 ? "col" : "col-" + this.props.width);
-    var innerClass = "bg-red padding-xsmall";
+    var x = Math.floor((Math.random() * 4));
+    var colors = ["red", "green", "blue", "yellow"]
+    var innerClass = "bg-" + colors[x] + " padding-xsmall";
 
     return (
       <div className={itemClass}>
