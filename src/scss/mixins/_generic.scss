@@ -25,3 +25,7 @@
 	@return rem($base-line-height) * 
 		strip-units(rem(getDictItem($name, $rule-widths)));
 }
+
+@function font-weight($name) {
+	@return getDictItem($name, $font-weights);
+}

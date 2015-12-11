@@ -46,6 +46,23 @@ $rule-widths: (
 
 $directions: ("left", "right", "top", "bottom");
 
+
+$font-weights: (
+	"thin" 100,
+	"hairline" 100,
+	"extra-light" 200,
+	"light" 300,
+	"regular" 400,
+	"book" 400,
+	"medium" 500,
+	"semi-bold" 600,
+	"demi-bold" 600,
+	"bold" 700,
+	"extra-bold" 800,
+	"heavy" 800,
+	"black" 900
+);
+
 $max-column-count: 12;
 $gutter: padding("small");
 $column-min-width: 20rem;

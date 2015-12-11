@@ -9,6 +9,12 @@
 
 	* {
 		box-sizing: border-box;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: geometricPrecision;
+		-moz-osx-font-smoothing: grayscale;
+
+		white-space: normal;
+	    word-wrap: break-word; 
 	}
 
 	html {
@@ -152,5 +158,134 @@
 				margin-#{$direction}: -1.0 * margin($name);
 			}
 		}
+	}
+
+	// Font styles
+
+	@each $font-weight in $font-weights {
+		$name: nth($font-weight, 1);
+		$value: nth($font-weight, 2);
+		
+		// Background colors
+
+		.font-weight-#{$name} {
+			font-weight: $value;
+		}
+	}
+
+	// 
+	// Misc
+	// 
+
+	// Container sizing
+
+	.full-width {
+		width: 100%;
+	}
+
+	.full-height {
+		height: 100%;
+	}
+
+	.screen-width {
+		min-width: 100vw;
+	}
+
+	.screen-height {
+		min-height: 100vh;
+	}
+
+	.frame {
+		@extend .full-width;
+		@extend .full-height;
+		@extend .screen-width;
+		@extend .screen-height;
+	}
+
+	// Display styles
+
+	.block {
+	  display: block !important;
+	}
+
+	.inline-block {
+	  display: inline-block !important;
+	}
+
+	.inline {
+	  display: inline !important;
+	}
+
+	.flex {
+	  display: flex;
+	}
+
+	// Positioning
+
+	.absolute {
+		position: absolute;
+	}
+
+	.relative {
+		position: relative;
+	}
+
+	.fixed {
+		position: fixed;
+	}
+
+	.sticky {
+		position: -webkit-sticky;
+		position: sticky;
+
+		&:before, &:after {
+			content: '';
+			display: table;
+		}
+	}
+
+	// Vertical centering
+
+	.vcenter-wrapper {
+	  transform: translateY(50%);
+	}
+
+	.vcenter {
+	  transform: translateY(-50%);
+	}
+
+	// Alignment
+
+	.left {
+		float: left;
+	}
+
+	.right {
+		float: right;
+	}
+
+	.centered {
+		float: none;
+		margin: 0 auto;
+	}
+
+	// Clearfix
+
+	.clearfix {
+		@include clearfix;
+	}
+
+	// Text alignment
+
+	.text-left {
+		text-align: left;
+	}
+
+	.text-right {
+		text-align: right;
+	}
+
+	.text-center {
+		text-align: center;
 	}
 }
