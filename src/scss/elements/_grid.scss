@@ -5,7 +5,7 @@
 @if elementIsIncluded("grid") {
 	@for $n from 1 to $max-column-count + 1 {
 		.grid-#{$n} {
-			@include grid($n);
+			@include grid($n, $gutter, $column-min-width, $column-max-width);
 		}
 	}
 }

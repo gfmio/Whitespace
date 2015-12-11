@@ -2,7 +2,7 @@
 // Flex grid placeholder and mixin
 // 
 
-@mixin grid($col-count) {
+@mixin grid($col-count, $gutter, $min-column-width, $max-column-width) {
 	// Container styles
 
 	& {
@@ -186,25 +186,43 @@
 		@for $n from 1 to $col-count + 1 {
 			@if ($n == 1) {
 				&.col, &.col-#{$n} {
-					width: 100% * (1.0 * $n) / (1.0 * $col-count);
+					width: 100%;
+					margin-left: auto;
+					margin-right: auto;
 					padding-left: 0.5 * $gutter;
 					padding-right: 0.5 * $gutter;
 					// flex-grow: $n;
 					// width: auto !important;
 					// min-width: auto !important;
 					// max-width: 10000000000em !important;
+
+					@media (min-width: em($min-column-width) * $col-count + ($col-count + 1) * em($gutter)) {
+						width: 100% * (1.0 * $n) / (1.0 * $col-count);
+					}
 				}
 			} @else {
 				&.col-#{$n} {
-					width: 100% * (1.0 * $n) / (1.0 * $col-count);
+					width: 100%;
+					margin-left: auto;
+					margin-right: auto;
 					padding-left: 0.5 * $gutter;
 					padding-right: 0.5 * $gutter;
 					// flex-grow: $n;
 					// width: auto !important;
 					// min-width: auto !important;
 					// max-width: 10000000000em !important;
+
+					@media (min-width: em($min-column-width) * $col-count + ($col-count + 1) * em($gutter)) {
+						width: 100% * (1.0 * $n) / (1.0 * $col-count);
+					}
 				}
 			}
+		}
+	}
+	
+	& {
+		@media (max-width: em($min-column-width) * $col-count + ($col-count + 1) * em($gutter)) {
+			max-width: em($max-column-width) + 2 * em($gutter) !important;
 		}
 	}
 }

@@ -27,7 +27,6 @@
 	//
 
 	$allColors: join($colors, $grayscales);
-	@debug($allColors);
 	@each $color in $allColors {
 		$name: nth($color, 1);
 		$value: nth($color, 2);
