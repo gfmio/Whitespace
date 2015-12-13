@@ -288,4 +288,42 @@
 	.text-center {
 		text-align: center;
 	}
+
+	// Content overflow
+
+	.overflow-visible {
+		overflow: visible;
+	}
+
+	.overflow-visible-x {
+		overflow-x: visible;
+	}
+
+	.overflow-visible-y {
+		overflow-y: visible;
+	}
+
+	.overflow-hidden {
+		overflow: hidden;
+	}
+
+	.overflow-hidden-x {
+		overflow-x: hidden;
+	}
+
+	.overflow-hidden-y {
+		overflow-y: hidden;
+	}
+
+	.overflow-scroll {
+		overflow: scroll;
+	}
+
+	.overflow-scroll-x {
+		overflow-x: scroll;
+	}
+
+	.overflow-scroll-y {
+		overflow-y: scroll;
+	}
 }
