@@ -2,6 +2,29 @@
 // Grid view elements
 // 
 
+var React = require('react');
+var ReactDOM = require('react-dom');
+
+// Example Item
+
+var ExampleItem = React.createClass({
+  render: function() {
+    var Item = whitespace.layout.Item;
+
+    var x = Math.floor((Math.random() * 4));
+    var colors = ["red", "green", "blue", "yellow"]
+    var innerClass = "bg-" + colors[x] + " text-center padding-xsmall margin-bottom-xsmall margin-top-xsmall";
+    
+    return (
+      <Item width={ this.props.width }>
+        <div className={ innerClass }>
+          { this.props.children }
+        </div>
+      </Item>
+    );
+  }
+});
+
 // Main View
 
 var MainView = React.createClass({
@@ -22,6 +45,8 @@ var MainView = React.createClass({
   },
 
   render: function() {
+    var GridContainer = whitespace.layout.GridContainer;
+
     var rows = [];
     for (var colCount = 1; colCount <= 6; colCount++) {
       var solutions = this.findPermutations(colCount);
@@ -33,49 +58,17 @@ var MainView = React.createClass({
         }
 
         for (n = 0; n < solutions[i].length; n++) {
-          children.push(<Item width={solutions[i][n]}>
-            {solutions[i][n]} of {totalWidth}
-          </Item>);
+          children.push(<ExampleItem key={ "item-"  + i + "-" + n } width={ solutions[i][n] }>
+            { solutions[i][n] } of { totalWidth }
+          </ExampleItem>);
         }
         
-        rows.push(<Grid cols={totalWidth}>
+        rows.push(<GridContainer cols={totalWidth}>
           {children}
-        </Grid>);
+        </GridContainer>);
       }
     }
     
     return (<div className="bg-black">{rows}</div>);
-  }
-});
-
-// Grid elements
-
-var Grid = React.createClass({
-  render: function() {
-    var gridClass = "container-" + this.props.cols + " grid-" + this.props.cols;
-
-    return (
-      <div className={gridClass}>
-        { this.props.children }
-      </div>
-    );
-  }
-});
-
-var Item = React.createClass({
-  render: function() {
-    var itemClass = "item text-center margin-bottom-xsmall margin-top-xsmall " + 
-    	(this.props.width == 1 ? "col" : "col-" + this.props.width);
-    var x = Math.floor((Math.random() * 4));
-    var colors = ["red", "green", "blue", "yellow"]
-    var innerClass = "bg-" + colors[x] + " padding-xsmall";
-
-    return (
-      <div className={itemClass}>
-        <div className={innerClass}>
-          { this.props.children }
-        </div>
-      </div>
-    );
   }
 });
