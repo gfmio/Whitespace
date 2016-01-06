@@ -5,8 +5,11 @@
 
 @function getDictItem($name, $list) {
 	@each $item in $list {
-		@if nth($item, 1) == $name {
-			@return nth($item, 2);
+		$len: length($item);
+		@for $n from 1 to $len {
+			@if nth($item, $n) == $name {
+				@return nth($item, $len);
+			}
 		}
 	}
 	@return null;
