@@ -1,0 +1,292 @@
+// 
+// Forms placeholders and mixin
+// 
+
+@mixin forms() {
+	form {
+
+	}
+
+	fieldset {
+
+	}
+
+	.input-group {
+		& {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			@extend .margin-top-large ;
+			@extend .margin-bottom-large ;
+		}
+
+		& input, & textarea, & select {
+			order: 2;
+		}
+
+		& label {
+			order: 1;
+		}
+
+		& .hint {
+			order: 3;
+		}
+
+		& .material-input {
+			order: 4;
+		}
+	}
+
+	label {
+		display: block;
+		width: 100%;
+
+		font-size: 0.8rem;
+		// @extend .font-weight-400;
+		@extend .text-gray;
+	}
+
+	.hint {
+		display: block;
+		width: 100%;
+		
+		font-size: 0.8rem;
+	}
+
+	.material-input {
+		display: block;
+		width: 100%;
+	}
+
+	// General input styles
+
+	input[type="text"], input[type="email"], input[type="number"], input[type="tel"], input[type="url"], input[type="search"], textarea, select,
+	input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="file"] {
+		display: block;
+		width: 100%;
+		
+		border-left: 0;
+		border-right: 0;
+		border-top: 0;
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+		@extend .border-bottom-gray;
+		margin-bottom: -1px;
+
+		background: transparent;
+
+		max-width: 100%;
+		font-size: 1.0rem;
+
+		@extend .padding-top-small;
+		@extend .padding-bottom-small;
+	}
+
+	input[type="range"] {
+		display: block;
+		width: 100%;
+	}
+
+	input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"], input[type="week"] {
+		display: block;
+		width: 100%;
+	}
+
+	input[type="radio"], input[type="checkbox"] {
+		display: block;
+		width: 100%;
+	}
+
+	input[type="color"] {
+		display: block;
+		width: auto;
+	}
+
+	input[type="file"] {
+		display: block;
+		width: 100%;
+	}
+
+	select {
+		display: block;
+		width: 100%;
+
+	}
+
+	select[multiple] {
+		display: block;
+		width: 100%;
+	}
+
+	// State-related input styles
+
+	%empty {
+
+	}
+
+	%not-empty {
+
+	}
+
+	*:focus {
+		outline: none;
+		outline-style:none;
+		appearance: none;
+		box-shadow:none;
+	}
+
+	%active {
+	}
+
+	%focus {
+		border-bottom-width: 2px;
+		margin-bottom: -2px;
+	}
+
+	%invalid {
+		box-shadow: none;
+	}
+
+	%not-empty-invalid {
+		border-bottom-color: color("danger");
+		color: color("danger");
+	}
+
+	%not-empty-invalid-aux {
+		color: color("danger");
+	}
+
+	%valid {
+		border-bottom-color: color("success");
+		color: color("success");
+	}
+
+	%valid-aux {
+		color: color("success");
+	}
+
+	%warning {
+		border-bottom-color: color("warning");
+		color: color("warning");
+	}
+
+	%warning-aux {
+		color: color("warning");
+	}
+
+	input {
+		&.empty {
+			@extend %empty !optional;
+		}
+
+		&:not(.empty) {
+			@extend %not-empty !optional;
+		}
+		
+		&:active, &.active {
+			& {
+				@extend %active !optional;
+			}
+
+			&:focus, &.focus {
+				&[type="text"], &[type="email"], &[type="number"], &[type="tel"], &[type="url"], &[type="search"],
+				&[type="date"], &[type="time"], &[type="datetime-local"], &[type="month"], &[type="week"], &[type="file"] {
+					@extend %focus !optional;
+				}
+			}
+		}
+
+		&:invalid {
+			@extend %invalid !optional;
+		}
+
+		&:not(.empty):invalid, &:not(.empty).invalid {
+			&[type="text"], &[type="email"], &[type="number"], &[type="tel"], &[type="url"], &[type="search"],
+			&[type="date"], &[type="time"], &[type="datetime-local"], &[type="month"], &[type="week"], &[type="file"] {
+				@extend %not-empty-invalid !optional;
+			}
+
+			& ~ .hint, & ~ label {
+				@extend %not-empty-invalid-aux !optional;
+			}
+		}
+
+		&:not(:invalid):not(.empty), &:valid:not(.empty), &.valid {
+			&[type="text"], &[type="email"], &[type="number"], &[type="tel"], &[type="url"], &[type="search"],
+			&[type="date"], &[type="time"], &[type="datetime-local"], &[type="month"], &[type="week"], &[type="file"] {
+				@extend %valid !optional;
+			}
+
+			& ~ .hint, & ~ label {
+				@extend %valid-aux !optional;
+			}
+		}
+
+		&.warning {
+			&[type="text"], &[type="email"], &[type="number"], &[type="tel"], &[type="url"], &[type="search"],
+			&[type="date"], &[type="time"], &[type="datetime-local"], &[type="month"], &[type="week"], &[type="file"] {
+				@extend %warning !optional;
+			}
+
+			& ~ .hint, & ~ label {
+				@extend %warning-aux !optional;
+			}
+		}
+	}
+
+	textarea, select {
+		&.empty {
+			@extend %empty !optional;
+		}
+
+		&:not(.empty) {
+			@extend %not-empty !optional;
+		}
+		
+		&:active, &.active {
+			& {
+				@extend %active !optional;
+			}
+
+			&:focus, &.focus {
+				& {
+					@extend %focus !optional;
+				}
+			}
+		}
+
+		&:invalid {
+			@extend %invalid !optional;
+		}
+
+		&:not(.empty):invalid, &:not(.empty).invalid {
+			& {
+				@extend %not-empty-invalid !optional;
+			}
+
+			& ~ .hint, & ~ label {
+				@extend %not-empty-invalid-aux !optional;
+			}
+		}
+
+		&:not(:invalid):not(.empty), &:valid:not(.empty), &.valid {
+			& {
+				@extend %valid !optional;
+			}
+
+			& ~ .hint, & ~ label {
+				@extend %valid-aux !optional;
+			}
+		}
+
+		&.warning {
+			& {
+				@extend %warning !optional;
+			}
+
+			& ~ .hint, & ~ label {
+				@extend %warning-aux !optional;
+			}
+		}
+	}
+}
