@@ -1,0 +1,24 @@
+{
+  "name": "whitespace",
+  "description": "A component-based frontend framework",
+  "main": "",
+  "authors": [
+    "Frédérique Mittelstaedt <me@gfm.io>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/gfmio/whitespace",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "jquery-validation": "~1.14.0",
+    "spectrum": "~1.8.0",
+    "rangeslider.js": "~2.0.5"
+  }
+}
