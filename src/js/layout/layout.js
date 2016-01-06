@@ -1,5 +1,5 @@
 // 
-// Whitspace layout package
+// Whitespace layout package
 // 
 
 export var Container = require('./container').Container;
