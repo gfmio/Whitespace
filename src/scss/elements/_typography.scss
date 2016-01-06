@@ -1,0 +1,7 @@
+// 
+// Typography element styles
+// 
+
+@if elementIsIncluded("typography") {
+	@include typography;	
+}

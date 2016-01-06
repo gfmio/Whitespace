@@ -1,0 +1,282 @@
+// 
+// Typography placeholders and mixin
+// 
+
+@mixin font-size-line-height($name, $base-line-height: $base-line-height, $base-factor: $base-line-multiple) {
+	$font-size: font-size($name);
+	$line-height: round(strip-units(rem($font-size)) / $base-factor) * $base-factor * $base-line-height * 1.0rem;
+
+	font-size: $font-size;
+	line-height: $line-height;
+}
+
+@mixin typography() {
+	body, input, textarea, select {
+		@extend .font-default;
+	}
+
+	code, pre, var, samp, kbd {
+		@extend .font-monospace;
+	}
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	p + p {
+		margin-top: padding(small);
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		padding-left: 0;
+		padding-right: 0;
+		padding-top: padding(small);
+		padding-bottom: padding(small);
+		margin: 0;
+
+		@extend .font-weight-200;
+		@extend .font-heading;
+	}
+
+	// Fonts
+
+	// Font sizes
+
+	h1 {
+		@include font-size-line-height("xxlarge");
+
+		small &, & small {
+			@include font-size-line-height("xlarge")
+		}
+	}
+
+	h2 {
+		@include font-size-line-height("xlarge");
+
+		small &, & small {
+			@include font-size-line-height("large")
+		}
+	}
+
+	h3 {
+		@include font-size-line-height("large");
+
+		small &, & small {
+			@include font-size-line-height("normal")
+		}
+	}
+
+	h4 {
+		@include font-size-line-height("normal");
+
+		small &, & small {
+			@include font-size-line-height("small")
+		}
+	}
+
+	h5 {
+		@include font-size-line-height("small");
+
+		small &, & small {
+			@include font-size-line-height("xsmall")
+		}
+	}
+
+	h6 {
+		@include font-size-line-height("xsmall");
+
+		small &, & small {
+			@include font-size-line-height("xxsmall")
+		}
+	}
+
+	small {
+		@include font-size-line-height("small");
+	}
+
+	@each $font-size in $font-sizes {
+		$length: length($font-size);
+		$value: nth($font-size, $length);
+
+		@for $n from 1 to $length {
+			$name: nth($font-size, $n);
+
+			.font-size-#{$name} {
+				& {
+					@include font-size-line-height($name);
+				}
+			}
+		}
+	}
+
+	blockquote {
+		& {
+			 @extend .border-left-thick;
+			 @extend .padding-left-large;
+			 border-left-color: color("default");
+		}
+
+		&.reverse {
+			 @extend .border-left-none;
+			 @extend .padding-left-none;
+			 @extend .padding-right-large;
+			 @extend .border-right-thick;
+			 border-right-color: color("default");
+
+			 text-align: right;
+		}
+
+		& footer {
+
+		}
+	}
+
+	address {
+
+	}
+
+	pre {
+
+	}
+
+	code {
+
+	}
+
+	kbd {
+		@extend .bg-dark;
+		@extend .padding-xxsmall;
+		@extend .border-radius-xxsmall;
+	}
+
+	var {
+
+	}
+
+	samp {
+
+	}
+
+	// Lists
+
+	ul, ol, dl {
+		& {
+			margin: 0;
+		}
+	}
+
+	ul, ol {
+		& li {
+
+		}
+
+		&.inline {
+			& li {
+				padding: 0;
+				display: inline-block;
+			}
+		}
+
+		&.unstyled {
+			list-style: none;
+		}
+	}
+
+	ul {
+
+	}
+
+	ol {
+
+	}
+
+	dl {
+		& {
+
+		}
+
+		& dt {
+			@extend .font-weight-600;
+		}
+
+		& dd {
+			@extend .margin-none;
+		}
+
+		& dd + dt {
+			@extend .padding-top-small;
+		}
+	}
+
+	// Inline styles
+
+	em {
+		
+	}
+
+	strong {
+
+	}
+
+	abbr {
+
+	}
+
+	del, s {
+
+	}
+
+	u {
+
+	}
+
+	ins {
+
+	}
+
+	mark {
+		@extend .bg-default;
+	}
+
+	::-moz-selection, ::selection {
+		@extend .bg-default;
+	}
+
+	// Transform classes
+
+	.text-lowercase {
+		text-transform: lowercase;
+	}
+
+	.text-uppercase {
+		text-transform: uppercase;
+	}
+
+	.text-capitalize {
+		text-transform: capitalize;
+	}
+
+	// Text alignment
+
+	.text-left {
+		text-align: left;
+	}
+
+	.text-right {
+		text-align: right;
+	}
+
+	.text-center {
+		text-align: center;
+	}
+
+	// * Notifications
+	// * Toasts
+	// * Truncating
+	// * Quote
+	// * Testimonial
+	// * Flex text
+	// * Labels
+	// * Badges
+}
