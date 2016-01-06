@@ -34,30 +34,59 @@
 
 	$allColors: join($colors, $grayscales);
 	@each $color in $allColors {
-		$name: nth($color, 1);
-		$value: nth($color, 2);
-		
-		// Background colors
+		$length: length($color);
+		$value: nth($color, $length);
 
-		.bg-#{$name} {
-			background-color: $value;
+		@for $n from 1 to $length {
+			$name: nth($color, $n);
+			
+			// Background colors
+
+			.bg-#{$name} {
+				background-color: $value;
+				color: text-color($value);
+			}
+
+			// Text colors
+
+			.text-#{$name} {
+				color: $value;
+			}
+
+			// Border colors
+
+			.border-#{$name}, hr.#{$name} {
+				border-color: $value;
+				border-style: solid;
+			}
+
+			@each $direction in $directions {
+				.border-#{$direction}-#{$name} {
+					border-#{$direction}-color: $value;
+				}
+			}
 		}
+	}
 
-		// Text colors
+	// 
+	// Fonts
+	// 
 
-		.text-#{$name} {
-			color: $value;
-		}
+	@each $font in $fonts {
+		$length: length($font);
+		$value: nth($font, $length);
 
-		// Border colors
+		@for $n from 1 to $length {
+			$name: nth($font, $n);  
+			$propertyCount: length($value);
+			
+			.font-#{$name} {
+				@for $n from 1 to $propertyCount + 1 {
+					$property: nth(nth($value, $n), 1);
+					$propertyValue: nth(nth($value, $n), 2);
 
-		.border-#{$name} {
-			border-color: $value;
-		}
-
-		@each $direction in $directions {
-			.border-#{$direction}-#{$name} {
-				border-#{$direction}-color: $value;
+					#{$property}: #{$propertyValue};
+				}
 			}
 		}
 	}
@@ -69,20 +98,27 @@
 	// Border and rule widths
 
 	@each $rule-width in $rule-widths {
-		$name: nth($rule-width, 1);
-		$value: nth($rule-width, 2);
+		$length: length($rule-width);
+		$value: nth($rule-width, $length);
 
-		hr.#{$name} {
-			width: rule-width($name);
-		}
+		@for $n from 1 to $length {
+			$name: nth($rule-width, $n);
 
-		.border-#{$name} {
-			border: rule-width($name);
-		}
+			hr.#{$name} {
+				border-top-width: rule-width($name);
+				border-left: 0;
+				border-right: 0;
+				border-bottom: 0;
+			}
 
-		@each $direction in $directions {
-			.border-#{$direction}-#{$name} {
-				border-#{$direction}: rule-width($name);
+			.border-#{$name} {
+				border-width: rule-width($name);
+			}
+
+			@each $direction in $directions {
+				.border-#{$direction}-#{$name} {
+					border-#{$direction}-width: rule-width($name);
+				}
 			}
 		}
 	}
@@ -90,43 +126,22 @@
 	// Paddings
 
 	@each $padding in $paddings {
-		$name: nth($padding, 1);
-		$value: nth($padding, 2);
+		$length: length($padding);
+		$value: nth($padding, $length);
 
-		.padding-#{$name} {
-			& {
-				padding: padding($name);
-			}
+		@for $n from 1 to $length {
+			$name: nth($padding, $n);
 
-			@each $rule-width in $rule-widths {
-				$rule-width-name: nth($rule-width, 1);
-
-				&.border-#{$rule-width-name} {
-					padding: padding($name) - rule-width($rule-width-name);
-				}
-				@each $direction in $directions {
-					&.border-#{$direction}-#{$name} {
-						&.padding-#{$direction}-#{$name} {
-							padding-#{$direction}: padding($name) - rule-width($rule-width-name);
-						}
-					}
-				}
-			}
-		}
-
-		@each $direction in $directions {
-			.padding-#{$direction}-#{$name} {
+			.padding-#{$name} {
 				& {
-					padding-#{$direction}: padding($name);
+					padding: padding($name);
 				}
+			}
 
-				@each $rule-width in $rule-widths {
-					$rule-width-name: nth($rule-width, 1);
-
-					&.border-#{$direction}-#{$name} {
-						&.padding-#{$direction}-#{$name} {
-							padding-#{$direction}: padding($name) - rule-width($rule-width-name);
-						}
+			@each $direction in $directions {
+				.padding-#{$direction}-#{$name} {
+					& {
+						padding-#{$direction}: padding($name);
 					}
 				}
 			}
@@ -136,26 +151,123 @@
 	// Margins
 
 	@each $margin in $margins {
-		$name: nth($margin, 1);
-		$value: nth($margin, 2);
+		$length: length($margin);
+		$value: nth($margin, $length);
 
-		.margin-#{$name} {
-			margin: margin($name);
-		}
+		@for $n from 1 to $length {
+			$name: nth($margin, $n);
 
-		@each $direction in $directions {
-			.margin-#{$direction}-#{$name} {
-				margin-#{$direction}: margin($name);
+			.margin-#{$name} {
+				& {
+					margin: margin($name);
+				}
+
+				@each $rule-width in $rule-widths {
+					$rLen: length($rule-width);
+
+					@for $n from 1 to $rLen {
+						$rule-width-name: nth($rule-width, $n);
+
+						&.border-#{$rule-width-name} {
+							margin: margin($name) - rule-width($rule-width-name);
+						}
+
+						@each $direction in $directions {
+							&.border-#{$direction}-#{$name} {
+								margin-#{$direction}: margin($name) - rule-width($rule-width-name);
+							}
+						}
+					}
+				}
+			}
+
+			@each $direction in $directions {
+				.margin-#{$direction}-#{$name} {
+					& {
+						margin-#{$direction}: margin($name);
+					}
+
+					@each $rule-width in $rule-widths {
+						$rLen: length($rule-width);
+
+						@for $n from 1 to $rLen {
+							$rule-width-name: nth($rule-width, $n);
+
+							&.border-#{$direction}-#{$name} {
+								margin-#{$direction}: margin($name) - rule-width($rule-width-name);
+							}
+						}
+					}
+				}
+			}
+
+			.margin-negative-#{$name} {
+				& {
+					margin: -1.0 * margin($name);
+				}
+
+				@each $rule-width in $rule-widths {
+					$rLen: length($rule-width);
+
+					@for $n from 1 to $rLen {
+						$rule-width-name: nth($rule-width, $n);
+
+						&.border-#{$rule-width-name} {
+							margin: -1.0 * margin($name) - rule-width($rule-width-name);
+						}
+
+						@each $direction in $directions {
+							&.border-#{$direction}-#{$name} {
+								margin-#{$direction}: -1.0 * margin($name) - rule-width($rule-width-name);
+							}
+						}
+					}
+				}
+			}
+
+			@each $direction in $directions {
+				.margin-negative-#{$direction}-#{$name} {
+					& {
+						margin-#{$direction}: -1.0 * margin($name);
+					}
+
+					@each $rule-width in $rule-widths {
+						$rLen: length($rule-width);
+
+						@for $n from 1 to $rLen {
+							$rule-width-name: nth($rule-width, $n);
+
+							&.border-#{$direction}-#{$name} {
+								margin-#{$direction}: -1.0 * margin($name) - rule-width($rule-width-name);
+							}
+						}
+					}
+				}
 			}
 		}
+	}
 
-		.margin-negative-#{$name} {
-			margin: -1.0 * margin($name);
-		}
+	// Border-radius
 
-		@each $direction in $directions {
-			.margin-negative-#{$direction}-#{$name} {
-				margin-#{$direction}: -1.0 * margin($name);
+	@each $radius in $border-radii {
+		$length: length($radius);
+		$value: nth($radius, $length);
+
+		@for $n from 1 to $length {
+			$name: nth($radius, $n);
+
+			.border-radius-#{$name} {
+				& {
+					border-radius: border-radius($name);
+				}
+			}
+
+			@each $corner-direction in $corner-directions {
+				.border-radius-#{$corner-direction}-#{$name} {
+					& {
+						border-#{$corner-direction}-radius: border-radius($name);
+					}
+				}
 			}
 		}
 	}
@@ -163,13 +275,15 @@
 	// Font styles
 
 	@each $font-weight in $font-weights {
-		$name: nth($font-weight, 1);
-		$value: nth($font-weight, 2);
-		
-		// Background colors
+		$length: length($font-weight);
+		$value: nth($font-weight, $length);
 
-		.font-weight-#{$name} {
-			font-weight: $value;
+		@for $n from 1 to $length {
+			$name: nth($font-weight, $n);
+
+			.font-weight-#{$name} {
+				font-weight: $value;
+			}
 		}
 	}
 
@@ -266,27 +380,14 @@
 
 	.center {
 		float: none;
-		margin: 0 auto;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	// Clearfix
 
 	.clearfix {
 		@include clearfix;
-	}
-
-	// Text alignment
-
-	.text-left {
-		text-align: left;
-	}
-
-	.text-right {
-		text-align: right;
-	}
-
-	.text-center {
-		text-align: center;
 	}
 
 	// Content overflow
@@ -325,5 +426,36 @@
 
 	.overflow-scroll-y {
 		overflow-y: scroll;
+	}
+
+	// Aspect ratio
+
+	.square, .ratio1_1, .ratio2_1, .ratio1_2, .ratio4_3, .ratio16_9 {
+		position: relative;
+	}
+
+	.square:before, .ratio1_1:before, .ratio2_1:before, .ratio1_2:before, .ratio4_3:before, .ratio16_9:before {
+		content: "";
+		display: block;
+	}
+
+	.square:before, .ratio1_1:before {
+		padding-top: 100%;
+	}
+
+	.ratio2_1:before{
+		padding-top: 50%;
+	}
+
+	.ratio1_2:before{
+		padding-top: 200%;
+	}
+
+	.ratio4_3:before{
+		padding-top: 75%;
+	}
+
+	.ratio16_9:before{
+		padding-top: 56.25%;
 	}
 }
