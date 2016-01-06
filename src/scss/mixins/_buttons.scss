@@ -1,0 +1,120 @@
+// 
+// Button placeholders and mixin
+// 
+
+@mixin buttons() {
+	button, input[type="submit"], input[type="reset"], a.btn {
+		& {
+			width: 100%;
+			display: block;
+
+			@extend .padding-xsmall;
+
+			// font-weight: $btn-font-weight;
+			text-align: center;
+			text-decoration: none;
+
+		    white-space:normal !important;
+		    word-wrap:break-word; 
+
+			vertical-align: middle;
+			touch-action: manipulation;
+			cursor: pointer;
+			user-select: none;
+
+			appearance: none;
+			border: none;
+
+			// @include transition(all .2s ease-in-out);
+		}
+
+		&, &:active, &.active {
+			&:focus, &.focus {
+			}
+		}
+
+		// @include hover-focus {
+			// text-decoration: none;
+		// }
+
+		&.focus {
+			text-decoration: none;
+		}
+
+		&:active, &.active {
+			background-image: none;
+			outline: 0;
+			// @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+		}
+
+		&.disabled, &:disabled, fieldset[disabled] & {
+			// cursor: $cursor-disabled;
+			opacity: .65;
+			// @include box-shadow(none);
+  		}
+
+  		// Styling
+
+  		&.filled {
+  			background-color: color("default");
+			color: text-color(color("default"));
+
+  			$allColors: join($colors, $grayscales);
+			@each $color in $allColors {
+				$length: length($color);
+				$value: nth($color, $length);
+
+				@for $n from 1 to $length {
+					$name: nth($color, $n);
+
+					&.#{$name} {
+						background-color: $value;
+						color: text-color(color("default"));
+					}
+				}
+			}
+
+  			border: none;
+
+  			&.rounded {
+  				border-radius: 0.125*1.618rem;
+  			}
+  		}
+
+  		&.outline {
+  			border: solid thin color("default");
+  			color: color("default");
+
+  			$allColors: join($colors, $grayscales);
+			@each $color in $allColors {
+				$length: length($color);
+				$value: nth($color, $length);
+
+				@for $n from 1 to $length {
+					$name: nth($color, $n);
+
+					&.#{$name} {
+			  			border: solid thin $value;
+			  			color: $value;
+					}
+				}
+			}
+
+			background: transparent;
+  		}
+	}
+
+  	button, input[type="submit"], a.btn {
+		@extend button.filled.default;
+		@extend button.filled.rounded;
+	}
+	
+	input[type="reset"] {
+		@extend button.filled.disabled;
+		@extend button.filled.rounded;
+	}
+
+	a.btn.disabled, fieldset[disabled] a.btn {
+	  pointer-events: none;
+	}
+}
