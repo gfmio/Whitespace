@@ -12,7 +12,7 @@ var ExampleItem = React.createClass({
     var Item = whitespace.layout.Item;
 
     var x = Math.floor((Math.random() * 4));
-    var colors = ["red", "green", "blue", "yellow"]
+    var colors = ["red", "green", "blue", "yellow"];
     var innerClass = "bg-" + colors[x] + " text-center padding-xsmall margin-bottom-xsmall margin-top-xsmall";
     
     return (
