@@ -13,10 +13,18 @@ if (window) {
 }
 
 whitespace.layout = require('./layout/layout');
-// whitespace.generic = require('./generic/generic');
+whitespace.generic = require('./generic/generic');
 // whitespace.typography = require('./typography/typography');
-// whitespace.forms = require('./forms/forms');
+whitespace.forms = require('./forms/forms');
 // whitespace.buttons = require('./buttons/buttons');
 // whitespace.icons = require('./icons/icons');
 // whitespace.media = require('./media/media');
 // whitespace.animations = require('./animations/animations');
+
+if (window) {
+	$().ready(function(){
+		// $("input[type=color]").spectrum({});
+		$('input[type="range"]').rangeslider({});
+		$("form").validate({});
+	});
+}
