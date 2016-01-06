@@ -1,6 +1,7 @@
 <!doctype html>
-<html>
+<html class="no-js">
 	<head>
+		<meta charset="utf-8" /> 
 		<title>Whitespace elements</title>
 		<link rel="stylesheet" type="text/css" href="../dist/whitespace.css">
 	</head>
@@ -8,6 +9,7 @@
 		<main id="main">
 		</main>
 		<script type="text/javascript" src="../dist/vendor.js"></script>
+		<script type="text/javascript" src="http://code.rifix.net/modernizr/3.2.0/modernizr.js"></script>
 		<script type="text/javascript" src="../dist/whitespace.js"></script>
 
 		<script src="js/vendors/JSXTransformer.js"></script>
@@ -17,6 +19,28 @@
 			  <MainView />,
 			  document.getElementById('main')
 			);
+
+			$(document).ready(function(){
+                $("body").css("font-family", "Proxima Nova");
+				$("code, pre, var, samp, kbd").css("font-family", "Inconsolata");
+
+                var inputEmptyValidation = function(e){
+                	if ($(e.currentTarget).val() == "") {
+                		if (! $(e.currentTarget).attr("required")) {
+	                		$(e.currentTarget).addClass("empty");
+	                	}
+                	} else {
+                		$(e.currentTarget).removeClass("empty");
+                	}
+
+                	if ($(e.currentTarget).is(':invalid')) {
+                		$(e.currentTarget).removeClass("empty");
+                	}
+                };
+
+                $("input, select, textarea").keyup(inputEmptyValidation);
+                $("input, select, textarea").change(inputEmptyValidation);
+            });
 		</script>
 	</body>
 </html>
