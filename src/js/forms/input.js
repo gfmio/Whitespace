@@ -54,10 +54,3 @@ export var Input = React.createClass({
     }
   }
 });
-
-<div className="input-group">
-            <label>Label</label>
-            <textarea name="textarea" placeholder="Input" />
-            <p className="hint"></p>
-            <span className="material-input"></span>
-          </div>
