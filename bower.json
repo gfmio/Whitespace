@@ -1,7 +1,10 @@
 {
   "name": "whitespace",
   "description": "A component-based frontend framework",
-  "main": "",
+  "main": [
+    "src/js/whitespace.js",
+    "src/scss/whitespace.scss"
+  ],
   "authors": [
     "Frédérique Mittelstaedt <me@gfm.io>"
   ],
