@@ -1,7 +1,7 @@
 {
   "name": "whitespace-framework",
   "description": "A component-based frontend framework",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "main": "whitespace.js",
   "repository": {
