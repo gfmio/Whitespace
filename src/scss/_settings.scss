@@ -7,7 +7,7 @@ $colors: (
 	"green" "success" #77B22E,
 	"blue" "default" #0580A6,
 	"yellow" "warning" #FFE11A
-);
+) !default;
 
 $grayscales: (
 	"black" "dark" #161616,
@@ -15,9 +15,9 @@ $grayscales: (
 	"gray" #999999,
 	"gray-light" "disabled" #CCCCCC,
 	"white" "light" #FFFFFF,
-);
+) !default;
 
-$link-color: inherit;
+$link-color: inherit !default;
 
 $fonts: (
 	"default" "sans" (
@@ -32,7 +32,7 @@ $fonts: (
 		"font-family" ("Inconsolata", "Consolas", "Courier New", monospace),
 		"font-weight" 400
 	)
-);
+) !default;
 
 $font-sizes: (
 	"xxsmall" 0.7,
@@ -45,11 +45,11 @@ $font-sizes: (
 	"huge" 1.8,
 	"xhuge" 2.5,
 	"xxhuge" 3.5
-);
+) !default;
 
-$base-font-size: 16px;
-$base-line-height: 1.618;
-$base-line-multiple: 0.25;
+$base-font-size: 16px !default;
+$base-line-height: 1.618 !default;
+$base-line-multiple: 0.25 !default;
 
 $paddings: (
 	"none" 0,
@@ -63,11 +63,11 @@ $paddings: (
 	"huge" 2.5,
 	"xhuge" 3.5,
 	"xxhuge" 5.0
-);
+) !default;
 
-$margins: $paddings;
+$margins: $paddings !default;
 
-$border-radii: $paddings;
+$border-radii: $paddings !default;
 
 $rule-widths: (
 	"none" 0,
@@ -78,10 +78,10 @@ $rule-widths: (
 	"thick" 2.0 / 16.0,
 	"xthick" 3.0 / 16.0,
 	"xxthick" 4.0 / 16.0
-);
+) !default;
 
-$directions: ("left", "right", "top", "bottom");
-$corner-directions: ("top-left", "top-right", "bottom-left", "bottom-right");
+$directions: ("left", "right", "top", "bottom") !default;
+$corner-directions: ("top-left", "top-right", "bottom-left", "bottom-right") !default;
 
 $font-weights: (
 	"thin" "hairline" "100" 100,
@@ -93,17 +93,17 @@ $font-weights: (
 	"bold" "700" 700,
 	"extra-bold" "heavy" "800" 800,
 	"black" "900" 900
-);
+) !default;
 
-$max-column-count: 12;
-$gutter: padding("small");
-$column-min-width: 20rem;
-$column-max-width: 33rem;
+$max-column-count: 12 !default;
+$gutter: padding("small") !default;
+$column-min-width: 20rem !default;
+$column-max-width: 33rem !default;
 
-$min-relative-container-width: 61.8%;
-$max-relative-container-width: 100%;
+$min-relative-container-width: 61.8% !default;
+$max-relative-container-width: 100% !default;
 
-$max-window-em-width: $column-max-width / (1.0 - strip-units($min-relative-container-width));
+$max-window-em-width: $column-max-width / (1.0 - strip-units($min-relative-container-width)) !default;
 
 $elements: (
 	"generic" true,
@@ -112,4 +112,4 @@ $elements: (
 	"typography" true,
 	"forms" true,
 	"buttons" true,
-);
+) !default;
