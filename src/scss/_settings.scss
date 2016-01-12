@@ -67,7 +67,9 @@ $paddings: (
 
 $margins: $paddings !default;
 
-$border-radii: $paddings !default;
+$border-radii: join($paddings, (
+	"round" 10000
+)) !default;
 
 $rule-widths: (
 	"none" 0,
