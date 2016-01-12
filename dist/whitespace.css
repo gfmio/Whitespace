@@ -10474,6 +10474,15 @@ small h6, h6 small {
   line-height: 1.2135rem;
 }
 
+a, a:link {
+  color: inherit;
+  text-decoration: underline;
+}
+
+a:hover, a:focus {
+  text-decoration: none;
+}
+
 small {
   font-size: 0.9rem;
   line-height: 1.618rem;
