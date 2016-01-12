@@ -97,6 +97,8 @@ $font-weights: (
 	"black" "900" 900
 ) !default;
 
+$fonts-base-path: '../fonts' !default;
+
 $max-column-count: 12 !default;
 $gutter: padding("small") !default;
 $column-min-width: 20rem !default;
