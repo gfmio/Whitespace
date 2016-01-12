@@ -143,7 +143,8 @@ gulp.task('styles', function() {
     cascade: true
   };
   var sassDevelopmentConfig =  {
-    src: 'src/scss/**/*.{sass,scss}',
+    // src: 'src/scss/**/*.{sass,scss}',
+    src: 'src/scss/whitespace.scss',
     dest: 'dist',
     options: {
       noCache: true,
@@ -156,7 +157,8 @@ gulp.task('styles', function() {
     }
   };
   var sassProductionConfig = {
-    src: 'src/scss/**/*.{sass,scss}',
+    // src: 'src/scss/**/*.{sass,scss}',
+    src: 'src/scss/whitespace.scss',
     dest: 'dist',
     options: {
       noCache: true,
