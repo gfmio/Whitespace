@@ -63,6 +63,7 @@
 			@each $direction in $directions {
 				.border-#{$direction}-#{$name} {
 					border-#{$direction}-color: $value;
+					border-#{$direction}-style: solid;
 				}
 			}
 		}
