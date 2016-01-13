@@ -21,15 +21,15 @@ $link-color: inherit !default;
 
 $fonts: (
 	"default" "sans" (
-		"font-family" ("Proxima Nova", "Futura", "Helvetica Neue", "Helvetica", sans-serif),
+		"font-family" ("Proxima Nova", "proxima-nova", "Futura", "Helvetica Neue", "Helvetica", sans-serif),
 		"font-weight" 400
 	),
 	"heading" (
-		"font-family" ("Proxima Nova", "Futura", "Helvetica Neue", "Helvetica", sans-serif),
+		"font-family" ("Proxima Nova", "proxima-nova", "Futura", "Helvetica Neue", "Helvetica", sans-serif),
 		"font-weight" 200
 	),
 	"monospace" (
-		"font-family" ("Inconsolata", "Consolas", "Courier New", monospace),
+		"font-family" ("Inconsolata", "inconsolata", "Consolas", "Courier New", monospace),
 		"font-weight" 400
 	)
 ) !default;
