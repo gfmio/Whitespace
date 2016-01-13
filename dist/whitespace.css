@@ -3132,7 +3132,7 @@ html {
   line-height: 1.618;
 }
 
-@media (min-width: 86.38743rem) {
+@media (min-width: 86.38743em) {
   html {
     font-size: 1.15758vw;
   }
@@ -3688,22 +3688,22 @@ input[type="date"], input[type="time"], input[type="datetime-local"], input[type
 }
 
 .font-default, body, input, textarea, select {
-  font-family: Proxima Nova, Futura, Helvetica Neue, Helvetica, sans-serif;
+  font-family: Proxima Nova, proxima-nova, Futura, Helvetica Neue, Helvetica, sans-serif;
   font-weight: 400;
 }
 
 .font-sans {
-  font-family: Proxima Nova, Futura, Helvetica Neue, Helvetica, sans-serif;
+  font-family: Proxima Nova, proxima-nova, Futura, Helvetica Neue, Helvetica, sans-serif;
   font-weight: 400;
 }
 
 .font-heading, h1, h2, h3, h4, h5, h6 {
-  font-family: Proxima Nova, Futura, Helvetica Neue, Helvetica, sans-serif;
+  font-family: Proxima Nova, proxima-nova, Futura, Helvetica Neue, Helvetica, sans-serif;
   font-weight: 200;
 }
 
 .font-monospace, code, pre, var, samp, kbd {
-  font-family: Inconsolata, Consolas, Courier New, monospace;
+  font-family: Inconsolata, inconsolata, Consolas, Courier New, monospace;
   font-weight: 400;
 }
 
@@ -9701,16 +9701,19 @@ input[type="date"], input[type="time"], input[type="datetime-local"], input[type
   display: table;
 }
 
-.vcenter-wrapper {
-  -webkit-transform: translateY(50%);
-      -ms-transform: translateY(50%);
-          transform: translateY(50%);
-}
-
 .vcenter {
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .left {
@@ -13413,6 +13416,18 @@ ul.unstyled, ol.unstyled {
 
 .text-center {
   text-align: center;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+.text-decoration-underline {
+  text-decoration: underline;
+}
+
+.text-decoration-overline {
+  text-decoration: overline;
 }
 
 .input-group {
