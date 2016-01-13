@@ -22,7 +22,7 @@
 		line-height: $base-line-height;
 	}
 
-	@media (min-width: $max-window-em-width) {
+	@media (min-width: em($max-window-em-width)) {
 		html {
 			font-size: 100.0 / strip-units($max-window-em-width) * 1.0vw;
 		}
@@ -361,12 +361,15 @@
 
 	// Vertical centering
 
-	.vcenter-wrapper {
-	  transform: translateY(50%);
-	}
+	// .vcenter-wrapper {
+	  // transform: translateY(50%);
+	// }
 
 	.vcenter {
-	  transform: translateY(-50%);
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  // transform: translateY(-50%);
 	}
 
 	// Alignment
