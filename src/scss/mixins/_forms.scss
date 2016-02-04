@@ -94,7 +94,16 @@
 
 	input[type="radio"], input[type="checkbox"] {
 		display: block;
-		width: 100%;
+		width: auto;
+		height: auto;
+    }
+
+	input[type="checkbox"]{
+		appearance: checkbox !important;
+	}
+
+	input[type="radio"]{
+		appearance: radio !important;
 	}
 
 	input[type="color"] {

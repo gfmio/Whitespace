@@ -15,7 +15,7 @@ export var Input = React.createClass({
             name={ this.props.name }
             placeholder={ this.props.placeholder }
             required={ this.props.required ? true : false }
-            className={ this.props.className + ((this.props.value === "") || (this.props.value == undefined) ? "empty" : "") } >
+            className={ (this.props.className ? this.props.className + " " : "") + ((this.props.value === "") || (this.props.value == undefined) ? "empty" : "") } >
             { this.props.value }
           </textarea>
           <label>{ this.props.label }</label>
@@ -30,7 +30,7 @@ export var Input = React.createClass({
             multiple={ this.props.multiple ? true : false }
             name={ this.props.name }
             required={ this.props.required ? true : false }
-            className={ this.props.className + ((this.props.value === "") || (this.props.value == undefined) ? "empty" : "") }>
+            className={ (this.props.className ? this.props.className + " " : "") + ((this.props.value === "") || (this.props.value == undefined) ? "empty" : "") }>
             { this.props.children }
           </select>
           <label>{ this.props.label }</label>
@@ -47,7 +47,7 @@ export var Input = React.createClass({
             placeholder={ this.props.placeholder }
             value={ this.props.value }
             required={ this.props.required ? true : false }
-            className={ this.props.className + ((this.props.value === "") || (this.props.value == undefined) ? "empty" : "") } />
+            className={ (this.props.className ? this.props.className + " " : "") + ((this.props.value === "") || (this.props.value == undefined) ? "empty" : "") } />
           <label>{ this.props.label }</label>
           <p className="hint">{ this.props.hint }</p>
           <span className="material-input"></span>
