@@ -3545,7 +3545,7 @@ html {
   border-top-style: solid;
 }
 
-.border-bottom-gray, input[type="text"], input[type="email"], input[type="number"], input[type="tel"], input[type="url"], input[type="search"], textarea, select,
+.border-bottom-gray, input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="tel"], input[type="url"], input[type="search"], textarea, select,
 input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="file"] {
   border-bottom-color: #999999;
   border-bottom-style: solid;
@@ -3995,12 +3995,12 @@ hr.xxthick {
   padding-right: 0.809rem;
 }
 
-.padding-top-small, dl dd + dt, input[type="text"], input[type="email"], input[type="number"], input[type="tel"], input[type="url"], input[type="search"], textarea, select,
+.padding-top-small, dl dd + dt, input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="tel"], input[type="url"], input[type="search"], textarea, select,
 input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="file"] {
   padding-top: 0.809rem;
 }
 
-.padding-bottom-small, input[type="text"], input[type="email"], input[type="number"], input[type="tel"], input[type="url"], input[type="search"], textarea, select,
+.padding-bottom-small, input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="tel"], input[type="url"], input[type="search"], textarea, select,
 input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="file"] {
   padding-bottom: 0.809rem;
 }
@@ -13484,7 +13484,7 @@ label {
   width: 100%;
 }
 
-input[type="text"], input[type="email"], input[type="number"], input[type="tel"], input[type="url"], input[type="search"], textarea, select,
+input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="tel"], input[type="url"], input[type="search"], textarea, select,
 input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="file"] {
   display: block;
   width: 100%;
